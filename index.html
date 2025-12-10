@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Calculator Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-area" onclick="location.reload()">
+            <i class="fas fa-cubes"></i> UniCalc
+        </div>
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="Search...">
+        </div>
+    </nav>
+
+    <div class="home-container">
+        
+        <div class="category-sidebar" id="category-sidebar">
+            <div class="sidebar-header">
+                <h2>Categories</h2>
+                <button id="reset-btn" onclick="location.reload()">View All</button>
+            </div>
+            <div class="grid" id="category-grid"></div>
+        </div>
+
+        <div class="sub-display" id="sub-category-container">
+            
+            <button id="mobile-back-btn" onclick="location.reload()">
+                <i class="fas fa-arrow-left"></i> Back to Categories
+            </button>
+
+            <div class="sub-header">
+                <h2 id="main-title">Select a Category</h2>
+                <p id="sub-desc">Choose a calculator from the list below</p>
+            </div>
+            
+            <div class="tool-list" id="sub-cat-list"></div>
+        </div>
+
+    </div>
+
+    <footer class="main-footer">
+        <p>Made by <a href="https://github.com/Sanjib-D" target="_blank">Sanjib</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
