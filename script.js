@@ -1,301 +1,151 @@
+if (!window.AppCalculators) window.AppCalculators = {};
+
 const calculatorData = [
   {
     category: "Basic & Daily Use",
-    id: "basic",
+    catId: "category_1",
     icon: "fa-calculator",
     tools: [
-      {
-        name: "Normal Calculator",
-        url: "./Calculators/Basic & Daily Use/Normal Calculator/index.html",
-      },
-      {
-        name: "Scientific Calculator",
-        url: "./Calculators/Basic & Daily Use/Scientific Calculator/index.html",
-      },
-      { name: "Age Calculator", url: "./Calculators/Basic & Daily Use/" },
-      { name: "Discount Calculator", url: "./Calculators/Basic & Daily Use/" },
-      {
-        name: "Percentage Calculator",
-        url: "./Calculators/Basic & Daily Use/",
-      },
-      {
-        name: "Simple & Compound Interest",
-        url: "./Calculators/Basic & Daily Use/",
-      },
-      { name: "EMI Calculator", url: "./Calculators/Basic & Daily Use/" },
-      {
-        name: "Salary Tax Calculator",
-        url: "./Calculators/Basic & Daily Use/",
-      },
-      {
-        name: "GST Calculator (India)",
-        url: "./Calculators/Basic & Daily Use/",
-      },
+      { name: "Normal Calculator", id: "normal_calc" },
+      { name: "Scientific Calculator", id: "sci_calc" },
+      { name: "Age Calculator", id: "age_calc" },
+      { name: "Date Difference", id: "date_diff_calc" },
+      { name: "Time Calculator (Add/Sub)", id: "time_calc" },
+      { name: "Percentage Calculator", id: "percent_calc" },
+      { name: "Discount Calculator", id: "discount_calc" },
+      { name: "Grade / GPA Calculator", id: "gpa_calc" },
     ],
   },
   {
     category: "Financial",
-    id: "financial",
+    catId: "category_2",
     icon: "fa-coins",
     tools: [
-      { name: "Loan Calculator", url: "calculators/financial/Loan/index.html" },
-      {
-        name: "Mortgage Calculator",
-        url: "calculators/financial/Mortgage/index.html",
-      },
-      { name: "SIP Calculator", url: "calculators/financial/SIP/index.html" },
-      {
-        name: "Investment Return",
-        url: "calculators/financial/Investment/index.html",
-      },
-      {
-        name: "Retirement Calculator",
-        url: "calculators/financial/Retirement/index.html",
-      },
-      { name: "Savings Goal", url: "calculators/financial/Savings/index.html" },
-      {
-        name: "Credit Card Payoff",
-        url: "calculators/financial/CreditCard/index.html",
-      },
-      {
-        name: "Inflation Calculator",
-        url: "calculators/financial/Inflation/index.html",
-      },
-      {
-        name: "Currency Exchange",
-        url: "calculators/financial/Currency/index.html",
-      },
+      { name: "Loan / EMI Calculator", id: "loan_calc" },
+      { name: "Mortgage Calculator", id: "mortgage_calc" },
+      { name: "SIP Calculator", id: "sip_calc" },
+      { name: "GST / VAT Calculator", id: "gst_calc" },
+      { name: "Salary Tax Estimator", id: "tax_calc" },
+      { name: "Currency Converter", id: "currency_calc" },
+      { name: "Simple & Compound Interest", id: "interest_calc" },
+      { name: "Retirement Planner", id: "retirement_calc" },
+      { name: "Credit Card Payoff", id: "cc_payoff_calc" },
+      { name: "Inflation Calculator", id: "inflation_calc" },
+      { name: "Savings Goal", id: "savings_goal_calc" },
     ],
   },
   {
     category: "Health & Fitness",
-    id: "health",
+    catId: "category_3",
     icon: "fa-heartbeat",
     tools: [
-      { name: "BMI Calculator", url: "calculators/health/BMI/index.html" },
-      { name: "BMR Calculator", url: "calculators/health/BMR/index.html" },
-      { name: "Calorie Intake", url: "calculators/health/Calorie/index.html" },
-      {
-        name: "Body Fat Percentage",
-        url: "calculators/health/BodyFat/index.html",
-      },
-      {
-        name: "Ideal Weight",
-        url: "calculators/health/IdealWeight/index.html",
-      },
-      { name: "Water Intake", url: "calculators/health/Water/index.html" },
-      {
-        name: "Pregnancy Due-Date",
-        url: "calculators/health/Pregnancy/index.html",
-      },
+      { name: "BMI Calculator", id: "bmi_calc" },
+      { name: "BMR & TDEE Calculator", id: "bmr_calc" },
+      { name: "Body Fat Percentage", id: "body_fat_calc" },
+      { name: "Daily Calorie Needs", id: "calorie_calc" },
+      { name: "Water Intake Calculator", id: "water_calc" },
+      { name: "Ideal Weight Calculator", id: "ideal_weight_calc" },
+      { name: "Pregnancy Due Date", id: "pregnancy_calc" },
+      { name: "Period / Ovulation Tracker", id: "ovulation_calc" },
+      { name: "Sleep Cycle Calculator", id: "sleep_calc" },
     ],
   },
   {
     category: "Utility & Daily Life",
-    id: "utility",
+    catId: "category_4",
     icon: "fa-mug-hot",
     tools: [
-      { name: "Tip Calculator", url: "calculators/utility/Tip/index.html" },
-      {
-        name: "Split Bill Calculator",
-        url: "calculators/utility/SplitBill/index.html",
-      },
-      {
-        name: "Fuel Efficiency",
-        url: "calculators/utility/FuelEfficiency/index.html",
-      },
-      {
-        name: "Electricity Bill",
-        url: "calculators/utility/Electricity/index.html",
-      },
-      { name: "Water Bill", url: "calculators/utility/WaterBill/index.html" },
-      {
-        name: "Cooking Converter",
-        url: "calculators/utility/Cooking/index.html",
-      },
-      {
-        name: "Time Duration",
-        url: "calculators/utility/TimeDuration/index.html",
-      },
+      { name: "Tip & Split Bill", id: "tip_calc" },
+      { name: "Fuel Cost & Mileage", id: "fuel_calc" },
+      { name: "Electricity Bill Estimator", id: "bill_calc" },
+      { name: "Cooking Converter (Cups to ML)", id: "cooking_calc" },
+      { name: "Password Generator", id: "pass_gen" },
+      { name: "Internet Speed Test (Est)", id: "net_speed_calc" },
+      { name: "Stopwatch & Timer", id: "stopwatch_tool" },
+      { name: "Counter / Tally", id: "counter_tool" },
+      { name: "Case Converter (Text)", id: "case_conv" },
     ],
   },
   {
     category: "Unit Converters",
-    id: "unit_converters",
+    catId: "category_5",
     icon: "fa-ruler-combined",
     tools: [
-      {
-        name: "Length Converter",
-        url: "calculators/unit_converters/Length/index.html",
-      },
-      {
-        name: "Weight Converter",
-        url: "calculators/unit_converters/Weight/index.html",
-      },
-      {
-        name: "Temperature Converter",
-        url: "calculators/unit_converters/Temperature/index.html",
-      },
-      {
-        name: "Speed Converter",
-        url: "calculators/unit_converters/Speed/index.html",
-      },
-      {
-        name: "Area & Volume Converter",
-        url: "calculators/unit_converters/AreaVolume/index.html",
-      },
-      {
-        name: "Data Storage Converter",
-        url: "calculators/unit_converters/DataStorage/index.html",
-      },
-      {
-        name: "Pressure Converter",
-        url: "calculators/unit_converters/Pressure/index.html",
-      },
+      { name: "Length Converter", id: "length_calc" },
+      { name: "Weight / Mass Converter", id: "weight_calc" },
+      { name: "Temperature Converter", id: "temp_calc" },
+      { name: "Speed Converter", id: "speed_calc" },
+      { name: "Area & Volume Converter", id: "area_vol_calc" },
+      { name: "Digital Storage (MB/GB)", id: "data_calc" },
+      { name: "Pressure Converter", id: "pressure_calc" },
     ],
   },
   {
     category: "Math & Geometry",
-    id: "math",
+    catId: "category_6",
     icon: "fa-square-root-alt",
     tools: [
-      { name: "Area Calculator", url: "calculators/math/Area/index.html" },
-      { name: "Volume Calculator", url: "calculators/math/Volume/index.html" },
-      {
-        name: "Quadratic Equation",
-        url: "calculators/math/Quadratic/index.html",
-      },
-      {
-        name: "Factorial Finder",
-        url: "calculators/math/Factorial/index.html",
-      },
-      {
-        name: "Prime Number Checker",
-        url: "calculators/math/Prime/index.html",
-      },
-      {
-        name: "Percentage to Decimal",
-        url: "calculators/math/PercentToDecimal/index.html",
-      },
-      { name: "Ratio Calculator", url: "calculators/math/Ratio/index.html" },
+      { name: "Area Calculator (Shapes)", id: "area_shape_calc" },
+      { name: "Volume Calculator (3D)", id: "volume_geom_calc" },
+      { name: "Quadratic Equation Solver", id: "quadratic_calc" },
+      { name: "Factorial Calculator", id: "factorial_calc" },
+      { name: "Prime Number Checker", id: "prime_calc" },
+      { name: "GCD & LCM Finder", id: "gcd_lcm_calc" },
+      { name: "Fraction Calculator", id: "fraction_calc" },
+      { name: "Ratio Calculator", id: "ratio_calc" },
     ],
   },
   {
     category: "Technology & Coding",
-    id: "tech",
+    catId: "category_7",
     icon: "fa-laptop-code",
     tools: [
-      {
-        name: "Binary ⇆ Decimal",
-        url: "calculators/tech/BinaryDecimal/index.html",
-      },
-      { name: "Hex ⇆ Binary", url: "calculators/tech/HexBinary/index.html" },
-      {
-        name: "Base64 Encoder/Decoder",
-        url: "calculators/tech/Base64/index.html",
-      },
-      {
-        name: "String Length Counter",
-        url: "calculators/tech/StringLength/index.html",
-      },
-      {
-        name: "Password Strength",
-        url: "calculators/tech/PasswordStrength/index.html",
-      },
-      {
-        name: "JSON Formatter",
-        url: "calculators/tech/JsonFormatter/index.html",
-      },
-      {
-        name: "Date/Time Formatter",
-        url: "calculators/tech/DateTime/index.html",
-      },
+      { name: "Binary <-> Decimal", id: "binary_calc" },
+      { name: "Hex <-> Binary", id: "hex_calc" },
+      { name: "Base64 Encoder/Decoder", id: "base64_tool" },
+      { name: "Password Strength Checker", id: "pass_strength_tool" },
+      { name: "String Length Counter", id: "str_len_tool" },
+      { name: "JSON Formatter", id: "json_fmt_tool" },
+      { name: "Image Resolution / Pixels", id: "pixel_calc" },
     ],
   },
   {
     category: "Travel & Vehicle",
-    id: "travel",
+    catId: "category_8",
     icon: "fa-plane-departure",
     tools: [
-      {
-        name: "Fuel Cost Estimator",
-        url: "calculators/travel/FuelCost/index.html",
-      },
-      {
-        name: "Trip Cost Calculator",
-        url: "calculators/travel/TripCost/index.html",
-      },
-      {
-        name: "EV Charging Cost",
-        url: "calculators/travel/EvCharging/index.html",
-      },
-      {
-        name: "Speed/Distance/Time",
-        url: "calculators/travel/SpeedDistTime/index.html",
-      },
-      {
-        name: "Toll Cost Estimator",
-        url: "calculators/travel/TollCost/index.html",
-      },
+      { name: "Trip Cost Estimator", id: "trip_cost_calc" },
+      { name: "EV Charging Cost", id: "ev_cost_calc" },
+      { name: "Speed / Distance / Time", id: "sdt_calc" },
+      { name: "Toll Cost Estimator", id: "toll_calc" },
+      { name: "Time Zone Difference", id: "timezone_calc" },
     ],
   },
   {
     category: "Shopping & Budget",
-    id: "shopping",
+    catId: "category_9",
     icon: "fa-shopping-cart",
     tools: [
-      {
-        name: "EMI Comparison Tool",
-        url: "calculators/shopping/EmiCompare/index.html",
-      },
-      {
-        name: "Price Comparison",
-        url: "calculators/shopping/PriceCompare/index.html",
-      },
-      {
-        name: "Unit Price Calculator",
-        url: "calculators/shopping/UnitPrice/index.html",
-      },
-      {
-        name: "Budget Planner",
-        url: "calculators/shopping/BudgetPlanner/index.html",
-      },
-      {
-        name: "Subscription Cost",
-        url: "calculators/shopping/Subscription/index.html",
-      },
+      { name: "Unit Price Comparison", id: "unit_price_calc" },
+      { name: "Sales Tax / VAT", id: "sales_tax_calc" },
+      { name: "Discount & Markdown", id: "markdown_calc" },
+      { name: "Subscription Cost Manager", id: "sub_cost_calc" },
+      { name: "Budget Planner", id: "budget_calc" },
     ],
   },
   {
-    category: "Premium & Fun",
-    id: "premium",
+    category: "Premium & Unique",
+    catId: "category_10",
     icon: "fa-crown",
     tools: [
-      {
-        name: "Life Expectancy Fun",
-        url: "calculators/premium/LifeExpectancy/index.html",
-      },
-      { name: "Sleep Cycle", url: "calculators/premium/SleepCycle/index.html" },
-      {
-        name: "Productivity Time Block",
-        url: "calculators/premium/Productivity/index.html",
-      },
-      {
-        name: "Screen Time Reduction",
-        url: "calculators/premium/ScreenTime/index.html",
-      },
-      {
-        name: "Carbon Footprint",
-        url: "calculators/premium/CarbonFootprint/index.html",
-      },
-      {
-        name: "Relationship Anniversary",
-        url: "calculators/premium/Anniversary/index.html",
-      },
-      {
-        name: "Study Planner",
-        url: "calculators/premium/StudyPlanner/index.html",
-      },
+      { name: "Love Compatibility", id: "love_calc" },
+      { name: "Zodiac Sign Finder", id: "zodiac_calc" },
+      { name: "Life Expectancy Est.", id: "life_exp_calc" },
+      { name: "Carbon Footprint", id: "carbon_calc" },
+      { name: "Productivity Time Blocker", id: "prod_timer" },
+      { name: "Relationship Anniversary", id: "anniversary_calc" },
+      { name: "Random Number Generator", id: "rng_calc" },
+      { name: "Dice Roller 3D", id: "dice_calc" },
     ],
   },
 ];
@@ -303,16 +153,19 @@ const calculatorData = [
 const homeContainer = document.querySelector(".home-container");
 const categoryGrid = document.getElementById("category-grid");
 const subCatList = document.getElementById("sub-cat-list");
+const subDisplay = document.getElementById("sub-category-container");
+const calcInterface = document.getElementById("calculator-interface");
 const mainTitle = document.getElementById("main-title");
 const searchInput = document.getElementById("search-input");
+const subDesc = document.getElementById("sub-desc");
 
 function renderCategories() {
   categoryGrid.innerHTML = "";
   calculatorData.forEach((cat) => {
     const div = document.createElement("div");
     div.className = "cat-card";
-    div.dataset.id = cat.id;
-    div.onclick = () => showSubCategories(cat.id);
+    div.dataset.id = cat.catId;
+    div.onclick = () => showSubCategories(cat.catId);
     div.innerHTML = `
             <i class="fas ${cat.icon}"></i>
             <h3>${cat.category}</h3>
@@ -323,9 +176,13 @@ function renderCategories() {
 }
 
 function showSubCategories(catId) {
-  const selectedCat = calculatorData.find((c) => c.id === catId);
+  const selectedCat = calculatorData.find((c) => c.catId === catId);
+  if (!selectedCat) return;
 
   homeContainer.classList.add("sidebar-active");
+
+  calcInterface.style.display = "none";
+  subDisplay.style.display = "block";
 
   document.querySelectorAll(".cat-card").forEach((card) => {
     card.classList.remove("active-cat");
@@ -333,28 +190,90 @@ function showSubCategories(catId) {
   });
 
   mainTitle.innerText = selectedCat.category;
-  document.getElementById("sub-desc").innerText =
-    "Select a tool below to open it.";
+  subDesc.innerText = "Choose a calculator from the list below";
 
-  renderToolList(selectedCat.tools);
+  if (selectedCat.tools.length === 0) {
+    subCatList.innerHTML = "<p>Coming soon...</p>";
+  } else {
+    subCatList.innerHTML = selectedCat.tools
+      .map(
+        (tool) => `
+            <div class="tool-link" onclick="loadCalculator('${catId}', '${tool.id}', '${tool.name}')">
+                <span><i class="fas fa-chevron-right" style="font-size:0.8rem; margin-right:10px; color:#aaa;"></i> ${tool.name}</span>
+                <i class="fas fa-arrow-right" style="color: #007bff;"></i>
+            </div>
+        `
+      )
+      .join("");
+  }
 }
 
-function renderToolList(tools) {
-  if (tools.length === 0) {
-    subCatList.innerHTML = "<p>No calculators added yet.</p>";
-    return;
-  }
+function loadCalculator(catId, toolId, toolName) {
+  subDisplay.style.display = "none";
+  calcInterface.style.display = "block";
 
-  subCatList.innerHTML = tools
-    .map(
-      (tool) => `
-        <a href="${tool.url}" class="tool-link">
-            <span><i class="fas fa-chevron-right" style="font-size:0.8rem; margin-right:10px; color:#aaa;"></i> ${tool.name}</span>
-            <i class="fas fa-arrow-right" style="color: #007bff;"></i>
-        </a>
-    `
-    )
-    .join("");
+  document.getElementById("calc-title").innerText = toolName;
+  const contentDiv = document.getElementById("calc-content");
+  const resultDiv = document.getElementById("calc-result");
+
+  contentDiv.innerHTML = "";
+  resultDiv.style.display = "none";
+  resultDiv.innerHTML = "";
+
+  if (window.AppCalculators[catId] && window.AppCalculators[catId][toolId]) {
+    const toolObj = window.AppCalculators[catId][toolId];
+
+    contentDiv.innerHTML = toolObj.getHtml();
+
+    if (typeof toolObj.init === "function") {
+      try {
+        toolObj.init();
+      } catch (e) {
+        console.error("Init Error:", e);
+      }
+    }
+
+    const btn = contentDiv.querySelector("#action-btn");
+    if (btn && typeof toolObj.calculate === "function") {
+      btn.onclick = () => {
+        try {
+          const result = toolObj.calculate();
+          if (result) {
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = result;
+          }
+        } catch (e) {
+          alert("Error in calculation.");
+        }
+      };
+    }
+  } else {
+    contentDiv.innerHTML = `
+            <div style="text-align:center; padding: 30px; color: #666;">
+                <i class="fas fa-tools" style="font-size: 3rem; margin-bottom: 15px; color: #ddd;"></i>
+                <h3>Under Construction</h3>
+                <p>Logic for <strong>${toolName}</strong> has not been added yet.</p>
+                <small>Open <strong>${catId}.js</strong> and add: <code>${toolId}: { ... }</code></small>
+            </div>`;
+  }
+}
+
+function closeCalculator() {
+  calcInterface.style.display = "none";
+  subDisplay.style.display = "block";
+}
+
+function goBackToCategories() {
+  homeContainer.classList.remove("sidebar-active");
+  calcInterface.style.display = "none";
+  subDisplay.style.display = "none";
+  document
+    .querySelectorAll(".cat-card")
+    .forEach((c) => c.classList.remove("active-cat"));
+  if (searchInput.value) {
+    searchInput.value = "";
+    renderCategories();
+  }
 }
 
 searchInput.addEventListener("input", (e) => {
@@ -363,8 +282,7 @@ searchInput.addEventListener("input", (e) => {
   if (term.length > 0) {
     homeContainer.classList.add("sidebar-active");
     mainTitle.innerText = `Search Results for "${e.target.value}"`;
-    document.getElementById("sub-desc").innerText =
-      "Calculators matching your search";
+    subDesc.innerText = "Calculators matching your search";
 
     document
       .querySelectorAll(".cat-card")
@@ -376,6 +294,7 @@ searchInput.addEventListener("input", (e) => {
         if (tool.name.toLowerCase().includes(term)) {
           results.push({
             ...tool,
+            catId: cat.catId,
             categoryName: cat.category,
           });
         }
@@ -386,25 +305,22 @@ searchInput.addEventListener("input", (e) => {
       subCatList.innerHTML = results
         .map(
           (tool) => `
-                <a href="${tool.url}" class="tool-link">
-                    <div>
-                        <strong>${tool.name}</strong><br>
-                        <small style="color:grey; font-size:0.8rem;">in ${tool.categoryName}</small>
-                    </div>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            `
+            <div class="tool-link" onclick="loadCalculator('${tool.catId}', '${tool.id}', '${tool.name}')">
+                <div>
+                    <strong>${tool.name}</strong><br>
+                    <small style="color:grey; font-size:0.8rem;">in ${tool.categoryName}</small>
+                </div>
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        `
         )
         .join("");
     } else {
       subCatList.innerHTML = `<div style="text-align:center; padding:20px; color:grey;">No calculators found.</div>`;
     }
   } else {
-    homeContainer.classList.remove("sidebar-active");
-    renderCategories();
+    goBackToCategories();
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderCategories();
-});
+document.addEventListener("DOMContentLoaded", renderCategories);

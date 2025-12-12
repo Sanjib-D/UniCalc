@@ -47,23 +47,20 @@ UniCalc is more than just a calculator; it is a suite of powerful utilities desi
 ```text
 UniCalc/
 │
-├── main.html           # The main entry point (Home/Hub)
+├── index.html          # The main entry point (Home/Hub)
 ├── style.css           # Global styling and layout logic
-├── script.js           # Configuration data and UI logic
+├── script.js           # Configuration data and UI router
 │
-├── Calculators/        # Directory containing individual tools
-│   ├── Basic & Daily Use/
-│   │   ├── Normal Calculator/
-│   │   └── Scientific Calculator/
-│   ├── Financial/
-│   ├── Health/
-│   ├── Utility/
-│   ├── unit_converters/
-│   ├── Math/
-│   ├── Tech/
-│   ├── Travel/
-│   ├── Shopping/
-│   └── Premium/
+├── main/               # Individual Calculator Logic Files
+│   ├── category_101.js # Normal Calculator
+│   ├── category_102.js # Scientific Calculator
+│   ├── category_103.js # Age Calculator
+│   ├── category_104.js # Date Difference
+│   ├── category_105.js # Time Calculator
+│   ├── category_106.js # Percentage Calculator
+│   ├── category_107.js # Discount Calculator
+│   ├── category_108.js # Grade/GPA Calculator
+│   └── ... (Future categories)
 │
 └── README.md
 
@@ -81,13 +78,13 @@ UniCalc/
 ### 1. Basic & Daily Use
 * [x] Normal Calculator
 * [x] Scientific Calculator
-* [ ] Age Calculator *(Coming Soon)*
-* [ ] Discount Calculator *(Coming Soon)*
-* [ ] Percentage Calculator *(Coming Soon)*
-* [ ] Simple & Compound Interest *(Coming Soon)*
-* [ ] EMI Calculator *(Coming Soon)*
-* [ ] Salary Tax Calculator *(Coming Soon)*
-* [ ] GST Calculator (India) *(Coming Soon)*
+* [x] Age Calculator *(Coming Soon)*
+* [x] Discount Calculator *(Coming Soon)*
+* [x] Percentage Calculator *(Coming Soon)*
+* [x] Simple & Compound Interest *(Coming Soon)*
+* [x] EMI Calculator *(Coming Soon)*
+* [x] Salary Tax Calculator *(Coming Soon)*
+* [x] GST Calculator (India) *(Coming Soon)*
 
 ### 2. Financial
 * [ ] Loan Calculator *(Coming Soon)*
