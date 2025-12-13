@@ -87,15 +87,15 @@ UniCalc/
 * [x] GST Calculator (India) *(Coming Soon)*
 
 ### 2. Financial
-* [ ] Loan Calculator *(Coming Soon)*
-* [ ] Mortgage Calculator *(Coming Soon)*
-* [ ] SIP Calculator *(Coming Soon)*
-* [ ] Investment Return *(Coming Soon)*
-* [ ] Retirement Calculator *(Coming Soon)*
-* [ ] Savings Goal *(Coming Soon)*
-* [ ] Credit Card Payoff *(Coming Soon)*
-* [ ] Inflation Calculator *(Coming Soon)*
-* [ ] Currency Exchange *(Coming Soon)*
+* [x] Loan Calculator *(Coming Soon)*
+* [x] Mortgage Calculator *(Coming Soon)*
+* [x] SIP Calculator *(Coming Soon)*
+* [x] Investment Return *(Coming Soon)*
+* [x] Retirement Calculator *(Coming Soon)*
+* [x] Savings Goal *(Coming Soon)*
+* [x] Credit Card Payoff *(Coming Soon)*
+* [x] Inflation Calculator *(Coming Soon)*
+* [x] Currency Exchange *(Coming Soon)*
 
 ### 3. Health & Fitness
 * [ ] BMI Calculator *(Coming Soon)*
