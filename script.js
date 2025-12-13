@@ -211,8 +211,8 @@ function showSubCategories(catId) {
 function loadCalculator(catId, toolId, toolName) {
   subDisplay.style.display = "none";
   calcInterface.style.display = "block";
-
   document.getElementById("calc-title").innerText = toolName;
+
   const contentDiv = document.getElementById("calc-content");
   const resultDiv = document.getElementById("calc-result");
 
@@ -221,41 +221,83 @@ function loadCalculator(catId, toolId, toolName) {
   resultDiv.innerHTML = "";
 
   if (window.AppCalculators[catId] && window.AppCalculators[catId][toolId]) {
-    const toolObj = window.AppCalculators[catId][toolId];
-
-    contentDiv.innerHTML = toolObj.getHtml();
-
-    if (typeof toolObj.init === "function") {
-      try {
-        toolObj.init();
-      } catch (e) {
-        console.error("Init Error:", e);
-      }
-    }
-
-    const btn = contentDiv.querySelector("#action-btn");
-    if (btn && typeof toolObj.calculate === "function") {
-      btn.onclick = () => {
-        try {
-          const result = toolObj.calculate();
-          if (result) {
-            resultDiv.style.display = "block";
-            resultDiv.innerHTML = result;
-          }
-        } catch (e) {
-          alert("Error in calculation.");
-        }
-      };
-    }
+    renderToolInterface(catId, toolId, contentDiv, resultDiv);
   } else {
+    const catIndex = calculatorData.findIndex((c) => c.catId === catId);
+    const toolIndex = calculatorData[catIndex].tools.findIndex(
+      (t) => t.id === toolId
+    );
+
+    const fileNumber = (catIndex + 1) * 100 + (toolIndex + 1);
+    const fileName = `main/category_${fileNumber}.js`;
+
     contentDiv.innerHTML = `
-            <div style="text-align:center; padding: 30px; color: #666;">
-                <i class="fas fa-tools" style="font-size: 3rem; margin-bottom: 15px; color: #ddd;"></i>
-                <h3>Under Construction</h3>
-                <p>Logic for <strong>${toolName}</strong> has not been added yet.</p>
-                <small>Open <strong>${catId}.js</strong> and add: <code>${toolId}: { ... }</code></small>
-            </div>`;
+      <div style="text-align:center; padding: 40px; color: #666;">
+        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #007bff; margin-bottom: 10px;"></i>
+        <p>Loading Tool...</p>
+      </div>`;
+
+    const script = document.createElement("script");
+    script.src = fileName;
+
+    script.onload = () => {
+      if (
+        window.AppCalculators[catId] &&
+        window.AppCalculators[catId][toolId]
+      ) {
+        renderToolInterface(catId, toolId, contentDiv, resultDiv);
+      } else {
+        showConstructionMsg(contentDiv, toolName, fileName);
+      }
+    };
+
+    script.onerror = () => {
+      showConstructionMsg(contentDiv, toolName, fileName);
+    };
+
+    document.body.appendChild(script);
   }
+}
+
+function renderToolInterface(catId, toolId, contentDiv, resultDiv) {
+  const toolObj = window.AppCalculators[catId][toolId];
+
+  if (typeof toolObj.getHtml === "function") {
+    contentDiv.innerHTML = toolObj.getHtml();
+  }
+
+  if (typeof toolObj.init === "function") {
+    try {
+      toolObj.init();
+    } catch (e) {
+      console.error("Init Error:", e);
+    }
+  }
+
+  const btn = contentDiv.querySelector("#action-btn");
+  if (btn && typeof toolObj.calculate === "function") {
+    btn.onclick = () => {
+      try {
+        const result = toolObj.calculate();
+        if (result) {
+          resultDiv.style.display = "block";
+          resultDiv.innerHTML = result;
+        }
+      } catch (e) {
+        alert("Error in calculation.");
+        console.error(e);
+      }
+    };
+  }
+}
+
+function showConstructionMsg(contentDiv, toolName, fileName) {
+  contentDiv.innerHTML = `
+        <div style="text-align:center; padding: 30px; color: #666;">
+            <i class="fas fa-tools" style="font-size: 3rem; margin-bottom: 15px; color: #ddd;"></i>
+            <h3>Under Construction</h3>
+            <p>The file <code>${fileName}</code> was not found or has no logic yet.</p>
+        </div>`;
 }
 
 function closeCalculator() {
