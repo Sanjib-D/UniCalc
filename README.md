@@ -98,31 +98,31 @@ UniCalc/
 * [x] Currency Exchange *(Coming Soon)*
 
 ### 3. Health & Fitness
-* [ ] BMI Calculator *(Coming Soon)*
-* [ ] BMR Calculator *(Coming Soon)*
-* [ ] Calorie Intake *(Coming Soon)*
-* [ ] Body Fat Percentage *(Coming Soon)*
-* [ ] Ideal Weight *(Coming Soon)*
-* [ ] Water Intake *(Coming Soon)*
-* [ ] Pregnancy Due-Date *(Coming Soon)*
+* [x] BMI Calculator *(Coming Soon)*
+* [x] BMR Calculator *(Coming Soon)*
+* [x] Calorie Intake *(Coming Soon)*
+* [x] Body Fat Percentage *(Coming Soon)*
+* [x] Ideal Weight *(Coming Soon)*
+* [x] Water Intake *(Coming Soon)*
+* [x] Pregnancy Due-Date *(Coming Soon)*
 
 ### 4. Utility & Daily Life
-* [ ] Tip Calculator *(Coming Soon)*
-* [ ] Split Bill Calculator *(Coming Soon)*
-* [ ] Fuel Efficiency *(Coming Soon)*
-* [ ] Electricity Bill *(Coming Soon)*
-* [ ] Water Bill *(Coming Soon)*
-* [ ] Cooking Converter *(Coming Soon)*
-* [ ] Time Duration *(Coming Soon)*
+* [x] Tip Calculator *(Coming Soon)*
+* [x] Split Bill Calculator *(Coming Soon)*
+* [x] Fuel Efficiency *(Coming Soon)*
+* [x] Electricity Bill *(Coming Soon)*
+* [x] Water Bill *(Coming Soon)*
+* [x] Cooking Converter *(Coming Soon)*
+* [x] Time Duration *(Coming Soon)*
 
 ### 5. Unit Converters
-* [ ] Length Converter *(Coming Soon)*
-* [ ] Weight Converter *(Coming Soon)*
-* [ ] Temperature Converter *(Coming Soon)*
-* [ ] Speed Converter *(Coming Soon)*
-* [ ] Area & Volume Converter *(Coming Soon)*
-* [ ] Data Storage Converter *(Coming Soon)*
-* [ ] Pressure Converter *(Coming Soon)*
+* [x] Length Converter *(Coming Soon)*
+* [x] Weight Converter *(Coming Soon)*
+* [x] Temperature Converter *(Coming Soon)*
+* [x] Speed Converter *(Coming Soon)*
+* [x] Area & Volume Converter *(Coming Soon)*
+* [x] Data Storage Converter *(Coming Soon)*
+* [x] Pressure Converter *(Coming Soon)*
 
 ### 6. Math & Geometry
 * [ ] Area Calculator *(Coming Soon)*
