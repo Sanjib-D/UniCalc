@@ -1,209 +1,206 @@
+/**
+ * Category 501: Length Converter
+ * A professional-grade utility for multi-unit length conversions.
+ */
 if (!window.AppCalculators) window.AppCalculators = {};
 if (!window.AppCalculators.category_5) window.AppCalculators.category_5 = {};
 
 window.AppCalculators.category_5.length_calc = {
+    // Conversion factors relative to 1 Meter (m)
     units: {
-        nanometer: { name: "Nanometer", factor: 1e-9, symbol: "nm" },
-        micron: { name: "Micron (μm)", factor: 1e-6, symbol: "μm" },
-        millimeter: { name: "Millimeter", factor: 0.001, symbol: "mm" },
-        centimeter: { name: "Centimeter", factor: 0.01, symbol: "cm" },
-        meter: { name: "Meter", factor: 1, symbol: "m" },
-        kilometer: { name: "Kilometer", factor: 1000, symbol: "km" },
-        inch: { name: "Inch", factor: 0.0254, symbol: "in" },
-        foot: { name: "Foot", factor: 0.3048, symbol: "ft" },
-        yard: { name: "Yard", factor: 0.9144, symbol: "yd" },
-        mile: { name: "Mile", factor: 1609.344, symbol: "mi" },
-        nautical_mile: { name: "Nautical Mile", factor: 1852, symbol: "nmi" }
+        nanometer: { name: "Nanometer", symbol: "nm", factor: 1e-9, desc: "Atomic scale" },
+        angstrom: { name: "Angstrom", symbol: "Å", factor: 1e-10, desc: "Molecular scale" },
+        micron: { name: "Micron", symbol: "µm", factor: 1e-6, desc: "Cellular scale" },
+        millimeter: { name: "Millimeter", symbol: "mm", factor: 0.001, desc: "Small objects" },
+        centimeter: { name: "Centimeter", symbol: "cm", factor: 0.01, desc: "Common metric" },
+        meter: { name: "Meter", symbol: "m", factor: 1, desc: "SI Base unit" },
+        kilometer: { name: "Kilometer", symbol: "km", factor: 1000, desc: "Geographic distance" },
+        inch: { name: "Inch", symbol: "in", factor: 0.0254, desc: "Imperial small" },
+        foot: { name: "Foot", symbol: "ft", factor: 0.3048, desc: "Human height scale" },
+        yard: { name: "Yard", symbol: "yd", factor: 0.9144, desc: "Field measurements" },
+        mile: { name: "Mile", symbol: "mi", factor: 1609.344, desc: "Imperial long" },
+        nautical_mile: { name: "Nautical Mile", symbol: "nmi", factor: 1852, desc: "Sea/Air navigation" },
+        astronomical_unit: { name: "Astronomical Unit", symbol: "AU", factor: 149597870700, desc: "Interplanetary scale" }
     },
 
     getHtml: function() {
         return `
-        <div class="len-calc-container">
-            <div class="len-main-card">
-                <div class="len-input-section">
-                    <div class="len-field">
+        <div class="len-container">
+            <div class="len-card main-converter">
+                <div class="len-row">
+                    <div class="len-group">
                         <label>From</label>
-                        <input type="number" id="len-val-1" step="any" value="1" placeholder="Enter value">
-                        <select id="len-unit-1"></select>
+                        <input type="number" id="len-v1" value="1" step="any" placeholder="Value">
+                        <select id="len-u1"></select>
                     </div>
                     
-                    <div class="len-swap-wrapper">
-                        <button id="len-swap-btn" title="Swap Units"><i class="fas fa-exchange-alt"></i></button>
+                    <div class="len-swap-area">
+                        <button id="len-swap-btn" title="Swap Units">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
                     </div>
 
-                    <div class="len-field">
+                    <div class="len-group">
                         <label>To</label>
-                        <input type="number" id="len-val-2" step="any" placeholder="Result">
-                        <select id="len-unit-2"></select>
+                        <input type="number" id="len-v2" step="any" placeholder="Result">
+                        <select id="len-u2"></select>
                     </div>
                 </div>
 
-                <div class="len-controls">
+                <div class="len-settings">
                     <div class="precision-control">
-                        <label>Decimals: </label>
-                        <input type="range" id="len-precision" min="0" max="10" value="4">
-                        <span id="precision-label">4</span>
+                        <span>Rounding: <b id="len-prec-val">4</b> Decimals</span>
+                        <input type="range" id="len-prec" min="0" max="10" value="4">
                     </div>
-                    <button id="len-copy-btn" class="secondary-btn"><i class="fas fa-copy"></i> Copy</button>
-                    <button id="len-reset-btn" class="secondary-btn"><i class="fas fa-undo"></i> Reset</button>
+                    <div class="action-btns">
+                        <button id="len-copy" class="btn-secondary"><i class="fas fa-copy"></i> Copy</button>
+                        <button id="len-reset" class="btn-secondary"><i class="fas fa-undo"></i> Reset</button>
+                    </div>
                 </div>
-
-                <div id="len-formula-box" class="formula-display"></div>
+                
+                <div id="len-formula" class="formula-box"></div>
             </div>
 
-            <div class="len-grid">
+            <div class="len-grid-secondary">
                 <div class="len-card">
-                    <h3><i class="fas fa-list"></i> All Unit Comparisons</h3>
-                    <div id="len-all-units" class="comparison-list"></div>
+                    <h3><i class="fas fa-layer-group"></i> All Units Table</h3>
+                    <div id="len-multi-list" class="multi-output-list"></div>
                 </div>
+                
                 <div class="len-card">
-                    <h3><i class="fas fa-history"></i> Recent Conversions</h3>
-                    <div id="len-history" class="history-list"></div>
+                    <h3><i class="fas fa-ruler-horizontal"></i> Magnitude Reference</h3>
+                    <div id="len-visual-aid" class="visual-aid-container"></div>
+                    <div id="len-history" class="history-container">
+                        <h4>Recent Conversions</h4>
+                        <ul id="len-history-list"></ul>
+                    </div>
                 </div>
             </div>
-
-            <div class="len-card scale-section">
-                <h3><i class="fas fa-ruler"></i> Visual Scale Reference</h3>
-                <div id="len-visual-aid" class="visual-aid"></div>
-            </div>
-        </div>
-        `;
+        </div>`;
     },
 
     init: function() {
-        const u1 = document.getElementById('len-unit-1');
-        const u2 = document.getElementById('len-unit-2');
-        const v1 = document.getElementById('len-val-1');
-        const v2 = document.getElementById('len-val-2');
-        const precisionSlider = document.getElementById('len-precision');
-        
-        // Populate Selects
+        const u1 = document.getElementById('len-u1');
+        const u2 = document.getElementById('len-u2');
+        const v1 = document.getElementById('len-v1');
+        const v2 = document.getElementById('len-v2');
+        const prec = document.getElementById('len-prec');
+        const historyList = [];
+
+        // Populate unit dropdowns
         Object.keys(this.units).forEach(key => {
             const unit = this.units[key];
-            const opt1 = new Option(`${unit.name} (${unit.symbol})`, key);
-            const opt2 = new Option(`${unit.name} (${unit.symbol})`, key);
-            u1.add(opt1);
-            u2.add(opt2);
+            u1.add(new Option(`${unit.name} (${unit.symbol})`, key));
+            u2.add(new Option(`${unit.name} (${unit.symbol})`, key));
         });
 
-        u2.value = "foot"; // Default target
+        u1.value = 'meter';
+        u2.value = 'foot';
+
+        const performCalc = (triggerSource) => {
+            const unit1 = this.units[u1.value];
+            const unit2 = this.units[u2.value];
+            const p = parseInt(prec.value);
+            document.getElementById('len-prec-val').innerText = p;
+
+            if (triggerSource === 1) {
+                const val = parseFloat(v1.value);
+                if (isNaN(val)) { v2.value = ""; return; }
+                const result = (val * unit1.factor) / unit2.factor;
+                v2.value = this.format(result, p);
+            } else {
+                const val = parseFloat(v2.value);
+                if (isNaN(val)) { v1.value = ""; return; }
+                const result = (val * unit2.factor) / unit1.factor;
+                v1.value = this.format(result, p);
+            }
+
+            this.updateExtras(u1.value, u2.value, v1.value, p);
+        };
 
         // Event Listeners
-        v1.addEventListener('input', () => this.convert(1));
-        v2.addEventListener('input', () => this.convert(2));
-        u1.addEventListener('change', () => this.convert(1));
-        u2.addEventListener('change', () => this.convert(1));
-        precisionSlider.addEventListener('input', (e) => {
-            document.getElementById('precision-label').innerText = e.target.value;
-            this.convert(1);
-        });
+        v1.addEventListener('input', () => performCalc(1));
+        v2.addEventListener('input', () => performCalc(2));
+        u1.addEventListener('change', () => performCalc(1));
+        u2.addEventListener('change', () => performCalc(1));
+        prec.addEventListener('input', () => performCalc(1));
 
         document.getElementById('len-swap-btn').onclick = () => {
             const temp = u1.value;
             u1.value = u2.value;
             u2.value = temp;
-            this.convert(1);
+            performCalc(1);
         };
 
-        document.getElementById('len-reset-btn').onclick = () => {
+        document.getElementById('len-reset').onclick = () => {
             v1.value = 1;
-            this.convert(1);
+            performCalc(1);
         };
 
-        document.getElementById('len-copy-btn').onclick = () => {
+        document.getElementById('len-copy').onclick = () => {
             const text = `${v1.value} ${this.units[u1.value].symbol} = ${v2.value} ${this.units[u2.value].symbol}`;
             navigator.clipboard.writeText(text);
             alert("Copied to clipboard!");
         };
 
-        this.convert(1); // Initial calculation
-    },
-
-    convert: function(triggerSource) {
-        const u1Key = document.getElementById('len-unit-1').value;
-        const u2Key = document.getElementById('len-unit-2').value;
-        const v1 = document.getElementById('len-val-1');
-        const v2 = document.getElementById('len-val-2');
-        const precision = parseInt(document.getElementById('len-precision').value);
-
-        const unit1 = this.units[u1Key];
-        const unit2 = this.units[u2Key];
-
-        let baseValue; // Value in Meters
-
-        if (triggerSource === 1) {
-            baseValue = parseFloat(v1.value) * unit1.factor;
-            const result = baseValue / unit2.factor;
-            v2.value = isNaN(result) ? "" : this.format(result, precision);
-        } else {
-            baseValue = parseFloat(v2.value) * unit2.factor;
-            const result = baseValue / unit1.factor;
-            v1.value = isNaN(result) ? "" : this.format(result, precision);
-        }
-
-        this.updateUI(u1Key, u2Key, baseValue, precision);
+        performCalc(1);
     },
 
     format: function(num, p) {
-        if (Math.abs(num) < 0.0001 && num !== 0) return num.toExponential(p);
+        if (num === 0) return 0;
+        const absNum = Math.abs(num);
+        if (absNum < 0.000001 || absNum > 1000000000) {
+            return num.toExponential(p);
+        }
         return parseFloat(num.toFixed(p));
     },
 
-    updateUI: function(u1, u2, baseMeters, precision) {
-        if (isNaN(baseMeters)) return;
+    updateExtras: function(id1, id2, val, p) {
+        const u1 = this.units[id1];
+        const u2 = this.units[id2];
+        const baseMeters = (parseFloat(val) || 0) * u1.factor;
 
-        // Formula
-        const ratio = this.units[u1].factor / this.units[u2].factor;
-        document.getElementById('len-formula-box').innerHTML = 
-            `<strong>Formula:</strong> Multiply the length value by <code>${this.format(ratio, 8)}</code>`;
+        // 1. Formula Box
+        const factor = u1.factor / u2.factor;
+        document.getElementById('len-formula').innerHTML = 
+            `<strong>Formula:</strong> multiply the length value by <code>${this.format(factor, 8)}</code>`;
 
-        // Comparison List
+        // 2. Multi-unit list
         let listHtml = "";
         Object.keys(this.units).forEach(key => {
             const u = this.units[key];
-            const val = baseMeters / u.factor;
-            listHtml += `<div class="comp-item"><span>${u.name}</span><strong>${this.format(val, precision)} ${u.symbol}</strong></div>`;
+            const converted = baseMeters / u.factor;
+            listHtml += `
+                <div class="multi-item">
+                    <span>${u.name}</span>
+                    <strong>${this.format(converted, p)} ${u.symbol}</strong>
+                </div>`;
         });
-        document.getElementById('len-all-units').innerHTML = listHtml;
+        document.getElementById('len-multi-list').innerHTML = listHtml;
 
-        // Visual Aid
+        // 3. Visual Aid
         this.renderVisualAid(baseMeters);
-        
-        // History (Debounced)
-        this.addToHistory(u1, u2, baseMeters, precision);
     },
 
     renderVisualAid: function(m) {
         const container = document.getElementById('len-visual-aid');
         let comparison = "";
-        if (m < 0.001) comparison = "Thinner than a human hair.";
-        else if (m < 0.03) comparison = "About the size of a paperclip.";
-        else if (m < 1) comparison = "Roughly the length of a guitar.";
-        else if (m < 10) comparison = "Equivalent to a standard garden hose.";
-        else if (m < 1000) comparison = "Similar to a football field's length.";
-        else comparison = "Longer than a 10-minute walk.";
+        
+        if (m === 0) comparison = "Zero length.";
+        else if (m < 0.001) comparison = "Smaller than a grain of sand.";
+        else if (m < 0.03) comparison = "Comparable to a small paperclip.";
+        else if (m < 1) comparison = "Approximately the length of a guitar.";
+        else if (m < 5) comparison = "Roughly the height of a standard room.";
+        else if (m < 100) comparison = "Comparable to a commercial airplane.";
+        else if (m < 1000) comparison = "About the length of 10 football fields.";
+        else if (m < 400000) comparison = "Equivalent to the elevation of the ISS.";
+        else comparison = "A significant geographic or cosmic distance.";
 
         container.innerHTML = `
-            <div class="scale-box">
+            <div class="visual-card">
+                <i class="fas fa-eye"></i>
                 <p>${comparison}</p>
-                <div class="scale-bar"><div class="scale-fill" style="width: ${Math.min((m*10), 100)}%"></div></div>
-            </div>
-        `;
-    },
-
-    history: [],
-    addToHistory: function(u1, u2, base, p) {
-        const entry = `${this.format(base/this.units[u1].factor, p)} ${this.units[u1].symbol} → ${this.format(base/this.units[u2].factor, p)} ${this.units[u2].symbol}`;
-        if (this.history[0] === entry) return;
-        this.history.unshift(entry);
-        if (this.history.length > 5) this.history.pop();
-        
-        document.getElementById('len-history').innerHTML = this.history.map(h => `<div class="history-item">${h}</div>`).join('');
-    },
-
-    calculate: function() {
-        // Required by main script trigger
-        this.convert(1);
-        return null; // Results are handled in real-time
+                <div class="scale-bar"><div class="scale-fill" style="width: ${Math.min((m/1000)*100, 100)}%"></div></div>
+            </div>`;
     }
 };
