@@ -78,51 +78,51 @@ UniCalc/
 ### 1. Basic & Daily Use
 * [x] Normal Calculator
 * [x] Scientific Calculator
-* [x] Age Calculator *(Coming Soon)*
-* [x] Discount Calculator *(Coming Soon)*
-* [x] Percentage Calculator *(Coming Soon)*
-* [x] Simple & Compound Interest *(Coming Soon)*
-* [x] EMI Calculator *(Coming Soon)*
-* [x] Salary Tax Calculator *(Coming Soon)*
-* [x] GST Calculator (India) *(Coming Soon)*
+* [x] Age Calculator
+* [x] Discount Calculator 
+* [x] Percentage Calculator 
+* [x] Simple & Compound Interest 
+* [x] EMI Calculator 
+* [x] Salary Tax Calculator 
+* [x] GST Calculator (India) 
 
 ### 2. Financial
-* [x] Loan Calculator *(Coming Soon)*
-* [x] Mortgage Calculator *(Coming Soon)*
-* [x] SIP Calculator *(Coming Soon)*
-* [x] Investment Return *(Coming Soon)*
-* [x] Retirement Calculator *(Coming Soon)*
-* [x] Savings Goal *(Coming Soon)*
-* [x] Credit Card Payoff *(Coming Soon)*
-* [x] Inflation Calculator *(Coming Soon)*
-* [x] Currency Exchange *(Coming Soon)*
+* [x] Loan Calculator
+* [x] Mortgage Calculator 
+* [x] SIP Calculator 
+* [x] Investment Return 
+* [x] Retirement Calculator
+* [x] Savings Goal 
+* [x] Credit Card Payoff 
+* [x] Inflation Calculator
+* [x] Currency Exchange 
 
 ### 3. Health & Fitness
-* [x] BMI Calculator *(Coming Soon)*
-* [x] BMR Calculator *(Coming Soon)*
-* [x] Calorie Intake *(Coming Soon)*
-* [x] Body Fat Percentage *(Coming Soon)*
-* [x] Ideal Weight *(Coming Soon)*
-* [x] Water Intake *(Coming Soon)*
-* [x] Pregnancy Due-Date *(Coming Soon)*
+* [x] BMI Calculator 
+* [x] BMR Calculator 
+* [x] Calorie Intake 
+* [x] Body Fat Percentage
+* [x] Ideal Weight 
+* [x] Water Intake 
+* [x] Pregnancy Due-Date 
 
 ### 4. Utility & Daily Life
-* [x] Tip Calculator *(Coming Soon)*
-* [x] Split Bill Calculator *(Coming Soon)*
-* [x] Fuel Efficiency *(Coming Soon)*
-* [x] Electricity Bill *(Coming Soon)*
-* [x] Water Bill *(Coming Soon)*
-* [x] Cooking Converter *(Coming Soon)*
-* [x] Time Duration *(Coming Soon)*
+* [x] Tip Calculator 
+* [x] Split Bill Calculator 
+* [x] Fuel Efficiency 
+* [x] Electricity Bill 
+* [x] Water Bill 
+* [x] Cooking Converter 
+* [x] Time Duration 
 
 ### 5. Unit Converters
-* [x] Length Converter *(Coming Soon)*
-* [x] Weight Converter *(Coming Soon)*
-* [x] Temperature Converter *(Coming Soon)*
-* [x] Speed Converter *(Coming Soon)*
-* [x] Area & Volume Converter *(Coming Soon)*
-* [x] Data Storage Converter *(Coming Soon)*
-* [x] Pressure Converter *(Coming Soon)*
+* [x] Length Converter
+* [x] Weight Converter 
+* [x] Temperature Converter 
+* [x] Speed Converter 
+* [x] Area & Volume Converter
+* [x] Data Storage Converter 
+* [x] Pressure Converter 
 
 ### 6. Math & Geometry
 * [ ] Area Calculator *(Coming Soon)*
