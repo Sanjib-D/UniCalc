@@ -51,6 +51,10 @@ UniCalc/
 ├── style.css           # Global styling and layout logic
 ├── script.js           # Configuration data and UI router
 │
+├── main/               # Individual Calculator CSS Files
+│   ├── category_1.css  # Basic & Daily Use
+│   ├── category_2.css  # Financial
+    └── ... (others categories)
 ├── main/               # Individual Calculator Logic Files
 │   ├── category_101.js # Normal Calculator
 │   ├── category_102.js # Scientific Calculator
@@ -60,7 +64,7 @@ UniCalc/
 │   ├── category_106.js # Percentage Calculator
 │   ├── category_107.js # Discount Calculator
 │   ├── category_108.js # Grade/GPA Calculator
-│   └── ... (Future categories)
+│   └── ... (All others categories)
 │
 └── README.md
 
