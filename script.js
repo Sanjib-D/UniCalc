@@ -213,6 +213,19 @@ function loadCalculator(catId, toolId, toolName) {
   calcInterface.style.display = "block";
   document.getElementById("calc-title").innerText = toolName;
 
+  // --- NEW: Dynamic CSS Loading Logic ---
+  const cssId = `css-${catId}`; // Unique ID for this category's CSS
+  if (!document.getElementById(cssId)) {
+    const link = document.createElement("link");
+    link.id = cssId;
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = `style/${catId}.css`; // Path to your new CSS folder
+    link.media = "all";
+    document.getElementsByTagName("head")[0].appendChild(link);
+  }
+  // --------------------------------------
+
   const contentDiv = document.getElementById("calc-content");
   const resultDiv = document.getElementById("calc-result");
 
@@ -241,10 +254,7 @@ function loadCalculator(catId, toolId, toolName) {
     script.src = fileName;
 
     script.onload = () => {
-      if (
-        window.AppCalculators[catId] &&
-        window.AppCalculators[catId][toolId]
-      ) {
+      if (window.AppCalculators[catId] && window.AppCalculators[catId][toolId]) {
         renderToolInterface(catId, toolId, contentDiv, resultDiv);
       } else {
         showConstructionMsg(contentDiv, toolName, fileName);
